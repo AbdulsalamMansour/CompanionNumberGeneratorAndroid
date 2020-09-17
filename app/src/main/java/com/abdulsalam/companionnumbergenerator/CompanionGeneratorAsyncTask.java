@@ -2,7 +2,6 @@ package com.abdulsalam.companionnumbergenerator;
 
 import android.annotation.SuppressLint;
 import android.content.ContentProviderOperation;
-import android.content.ContentProviderResult;
 import android.content.Context;
 import android.os.AsyncTask;
 import android.provider.ContactsContract;
@@ -42,7 +41,7 @@ public class CompanionGeneratorAsyncTask extends AsyncTask<String, String, Boole
         String prefix = number.substring(0, number.length() - 3);
         ArrayList<String> numbers = new ArrayList<>();
 
-        for (int suffix = 0; suffix < 5; suffix++) {
+        for (int suffix = 0; suffix < 1000; suffix++) {
             numbers.add(prefix + String.format("%03d", suffix));
         }
 
@@ -86,8 +85,7 @@ public class CompanionGeneratorAsyncTask extends AsyncTask<String, String, Boole
             Context context = contextRef.get();
             if (context != null) {
                 try {
-                    ContentProviderResult[] results = context.getContentResolver().applyBatch(ContactsContract.AUTHORITY, ops);
-                    System.out.println(results.length);
+                    context.getContentResolver().applyBatch(ContactsContract.AUTHORITY, ops);
                 } catch (Exception e) {
                     e.printStackTrace();
                     Toast.makeText(context, "Exception: " + e.getMessage(), Toast.LENGTH_SHORT).show();
