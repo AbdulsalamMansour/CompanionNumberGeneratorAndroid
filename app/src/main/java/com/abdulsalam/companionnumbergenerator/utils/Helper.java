@@ -21,8 +21,17 @@ public class Helper {
         }
     }
 
-    public static void hideKeyboard(Activity activity) {
-        InputMethodManager inputMethodManager =(InputMethodManager) activity.getSystemService(Activity.INPUT_METHOD_SERVICE);
-        inputMethodManager.hideSoftInputFromWindow(activity.getCurrentFocus().getWindowToken(), 0);
+    public static String replaceArabicNumbers(String original) {
+        return original
+                .replaceAll("٠", "0").
+                        replaceAll("١", "1")
+                .replaceAll("٢", "2")
+                .replaceAll("٣", "3")
+                .replaceAll("٤", "4")
+                .replaceAll("٥", "5")
+                .replaceAll("٦", "6")
+                .replaceAll("٧", "7")
+                .replaceAll("٨", "8")
+                .replaceAll("٩", "9");
     }
 }

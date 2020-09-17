@@ -4,4 +4,5 @@
     <string name="store_number">Store Number</string>
     <string name="home">Home</string>
     <string name="please_wait">Please wait</string>
+    <string name="msg_insert_mobile_number">Please insert a mobile number</string>
 </resources>
