@@ -2,11 +2,10 @@ package com.abdulsalam.companionnumbergenerator.utils;
 
 import android.app.Activity;
 import android.os.Build;
+import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 
 import androidx.annotation.RequiresApi;
-
-import java.util.Objects;
 
 public class Helper {
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
@@ -16,8 +15,10 @@ public class Helper {
                         Activity.INPUT_METHOD_SERVICE);
 
         if (inputMethodManager != null) {
-            inputMethodManager.hideSoftInputFromWindow(
-                    Objects.requireNonNull(activity.getCurrentFocus()).getWindowToken(), 0);
+            View view = activity.getCurrentFocus();
+            if(view != null) {
+                inputMethodManager.hideSoftInputFromWindow(view.getWindowToken(), 0);
+            }
         }
     }
 

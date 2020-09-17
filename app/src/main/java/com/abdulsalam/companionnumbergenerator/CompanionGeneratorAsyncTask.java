@@ -18,7 +18,7 @@ public class CompanionGeneratorAsyncTask extends AsyncTask<String, String, Boole
 
     public CompanionGeneratorAsyncTask(Context context, GenerationFinishedListener listener) {
         contextRef = new WeakReference<>(context);
-        this.listener = new WeakReference<GenerationFinishedListener>(listener);
+        this.listener = new WeakReference<>(listener);
     }
 
     @Override
@@ -42,7 +42,7 @@ public class CompanionGeneratorAsyncTask extends AsyncTask<String, String, Boole
         String prefix = number.substring(0, number.length() - 3);
         ArrayList<String> numbers = new ArrayList<>();
 
-        for (int suffix = 0; suffix < 1000; suffix++) {
+        for (int suffix = 0; suffix < 5; suffix++) {
             numbers.add(prefix + String.format("%03d", suffix));
         }
 
@@ -51,7 +51,7 @@ public class CompanionGeneratorAsyncTask extends AsyncTask<String, String, Boole
 
     private void storeContacts(ArrayList<String> numbers) {
         for (String number : numbers) {
-            ArrayList<ContentProviderOperation> ops = new ArrayList<ContentProviderOperation>();
+            ArrayList<ContentProviderOperation> ops = new ArrayList<>();
 
             ops.add(ContentProviderOperation.newInsert(
                     ContactsContract.RawContacts.CONTENT_URI)
