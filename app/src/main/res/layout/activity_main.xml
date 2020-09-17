@@ -21,7 +21,7 @@
         android:layout_margin="@dimen/margin_default"
         android:autofillHints="Mobile Number"
         android:imeOptions="actionDone"
-        android:inputType="number"/>
+        android:inputType="phone"/>
 
     <Button
         android:id="@+id/btn_store_number"
