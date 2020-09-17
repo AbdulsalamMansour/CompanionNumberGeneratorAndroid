@@ -12,11 +12,13 @@ import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.abdulsalam.companionnumbergenerator.utils.Helper;
+import com.abdulsalam.companionnumbergenerator.utils.WaitDialog;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
     EditText mMobileNumberEditText;
     Button mStoreNumberButton;
+    WaitDialog mWaitDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,6 +43,19 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 return false;
             }
         });
+    }
+
+    private void showWaitDialog() {
+        if (mWaitDialog == null) {
+            mWaitDialog = new WaitDialog(this);
+        }
+        mWaitDialog.showDialog();
+    }
+
+    private void hideWaitDialog() {
+        if (mWaitDialog != null) {
+            mWaitDialog.dismissDialog();
+        }
     }
 
     @Override
